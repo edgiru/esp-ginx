@@ -1,0 +1,12 @@
+sudo: false
+language: cpp
+addons:
+  apt:
+    packages:
+    - python-serial
+    - srecord
+- git clone https://github.com/pfalcon/esp-open-sdk.git
+- ls -l
+- cd esp-open-sdk
+- ls -l
+- make
