@@ -1,11 +1,11 @@
 esp-ginx
 --------
 
-##Robust HTTP server for the ESP8266
+##Надежный HTTP server для ESP8266
 
-This project was inspired esp-httpd by Sprite_tm, NodeMcu ( https://github.com/nodemcu/nodemcu-firmware ) and NGINX
+Этот проект является вдохновением от esp-httpd от Sprite_tm, NodeMcu(https://github.com/nodemcu/nodemcu-firmware) and NGINX, прорадитель и создатель esp-ginx является israellot
 
-Main features
+Основные свойства:
 =============
 
 1. Event-driven, single threaded. No blocking, nowhere.
@@ -21,13 +21,13 @@ Main features
 12. WebSockects! 
 12. Bonus http client :)
 
-Overview
+Обзор
 -------
 After playing around with esp-httpd I decided to extend it and ended up deciding to take it to the next level.
 I've used the NodeMcu firmware as base, removed all the lua related code and got a solid framework to work on.
 Later I ported Joyent's http parser (https://github.com/joyent/http-parser), which is almost the NGINX implementation, to the esp and developed from there. 
 
-The File System
+Файловая система
 ---------------
 I personally didn't like the overhead of decompressing static files to send over http as in esp-httpd, so I created a rom file system that consists of a static FS descriptor and an array with the data concatenated. To keep size short, I compress the files with gzip and send the compressed data stream with the gzip content-encoding. I could fit the whole bootstrap css+js files even if I didn't need to, plus cats pictures to honor Sprite_tm.
 
@@ -57,20 +57,19 @@ Websockets
 Why? Mostly because I didn't see it around.
 I use it to speed test the esp's tcp capabilities, so a very simple application is written on top of the websocket stack that will keep flushing tcp packets of the chosen size so we can measure how many bytes / second we receive on the other end.
 
-The Demo
+Демо
 --------
-This demo application assumes:
-* Relays connects to GPIO 5 and 4
-* DHT22 sensor connected to GPIO 2
+Демо включает в себя:
+* Рэлейные модули подключать к GPIO 5 и 4
+* Датчик влажности и температуры DHT22 подключать к GPIO 2
 
-You can :
-* Scan available wifi networks
-* Connect to an wifi network
-* Direct test the relays 
-* Read temperature and humidity data
-* Do a tcp speed test on ESP8266 using websockets ( no more discussion about it, data wins )
-* See the required pictures of cats
+Вы можете:
+* Сканировать доступные wifi сети
+* Подключиться к wifi сети
+* Тест ключения и отключения рэле
+* Видеть данные графика температуры и влажности
+* Произвести тест скорости сети ESP8266 используя websockets ( no more discussion about it, data wins )
+* Смотреть фоторафию кошки :)
 
-![Speed Test](http://i.gyazo.com/89e3fcea70641e871a3bfbaf5d116d66.png)
-
+![Тест скорости](http://i.gyazo.com/89e3fcea70641e871a3bfbaf5d116d66.png)
 
